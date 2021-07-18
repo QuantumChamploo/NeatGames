@@ -237,7 +237,7 @@ def run(config_file):
     #p.add_reporter(neat.Checkpointer(5))
 
     # Run for up to 50 generations.
-    winner = p.run(eval_genomes,3000)
+    winner = p.run(eval_genomes,5)
 
     # show final stats
     print('\nBest genome:\n{!s}'.format(winner))
@@ -266,6 +266,10 @@ def run(config_file):
     req = required_for_output(config.genome_config.input_keys, config.genome_config.output_keys, connections)
     print("printing required")
     print(req)
+
+    stats.save_genome_fitness(delimiter=",")
+    stats.save_species_fitness()
+    stats.save_species_count()
 
 
 if __name__ == '__main__':
